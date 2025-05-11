@@ -1,6 +1,4 @@
-
-import { motion } from 'framer-motion';
-import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 
 type PlanFeature = {
@@ -19,48 +17,41 @@ type Plan = {
 
 const subscriptionPlans: Plan[] = [
   {
-    name: "Basic",
-    price: "$99",
+    name: "Starter",
+    price: "1,999 SEK",
     description: "Perfect for individuals and small projects",
     features: [
-      { text: "2 video edits per month", included: true },
-      { text: "Up to 5 minutes per video", included: true },
-      { text: "Basic color grading", included: true },
-      { text: "Social media optimization", included: true },
-      { text: "48-hour delivery", included: false },
-      { text: "Commercial usage rights", included: false },
-      { text: "Advanced effects", included: false },
+      { text: "1 video (vertical or horizontal)", included: true },
+      { text: "15-40 second video duration per video", included: true },
+      { text: "1-2 hours onsite", included: true },
+      { text: "1 review", included: true },
     ],
     buttonText: "Get Started",
   },
   {
-    name: "Professional",
-    price: "$199",
+    name: "Business Boost",
+    price: "4,997 SEK",
     description: "Ideal for growing businesses and content creators",
     features: [
-      { text: "5 video edits per month", included: true },
-      { text: "Up to 10 minutes per video", included: true },
-      { text: "Advanced color grading", included: true },
-      { text: "Social media optimization", included: true },
-      { text: "48-hour delivery", included: true },
-      { text: "Commercial usage rights", included: true },
-      { text: "Advanced effects", included: false },
+      { text: "2 videos (vertical or horizontal)", included: true },
+      { text: "15-40 second video duration per video", included: true },
+      { text: "2-3 hours onsite", included: true },
+      { text: "3 review", included: true },
+      { text: "3 images", included: true },
     ],
     buttonText: "Get Started",
     popular: true,
   },
   {
-    name: "Premium",
-    price: "$349",
+    name: "Social Pro",
+    price: "9,990 SEK",
     description: "Complete solution for professional content creators",
     features: [
-      { text: "10 video edits per month", included: true },
-      { text: "Up to 20 minutes per video", included: true },
-      { text: "Professional color grading", included: true },
-      { text: "Social media optimization", included: true },
-      { text: "24-hour delivery", included: true },
-      { text: "Commercial usage rights", included: true },
-      { text: "Advanced effects", included: true },
+      { text: "5 videos (vertical or horizontal)", included: true },
+      { text: "15-40 second video duration per video", included: true },
+      { text: "4-8 hours onsite", included: true },
+      { text: "6 review", included: true },
+      { text: "7 images", included: true },
     ],
     buttonText: "Get Started",
   },
@@ -71,36 +62,36 @@ const SubscriptionPlans = () => {
     <section id="services" className="section-padding bg-secondary/30">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
             className="text-primary font-medium mb-3"
           >
-            SUBSCRIPTION PLANS
+            PACKAGES
           </motion.p>
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="heading-lg mb-4"
           >
-            Choose the Perfect Plan for Your Needs
+            Choose the Perfect Package for Your Needs
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-muted-foreground text-lg"
           >
-            Flexible subscription options designed to match your content creation requirements,
-            from individual creators to established brands.
+            Flexible packages to suit your brand's content needs - from startups
+            to established businesses.
           </motion.p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {subscriptionPlans.map((plan, index) => (
             <motion.div
@@ -110,7 +101,7 @@ const SubscriptionPlans = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 * index }}
               className={`relative bg-white rounded-2xl shadow-soft overflow-hidden ${
-                plan.popular ? 'ring-2 ring-primary' : ''
+                plan.popular ? "ring-2 ring-primary" : ""
               }`}
             >
               {plan.popular && (
@@ -120,41 +111,51 @@ const SubscriptionPlans = () => {
                   </div>
                 </div>
               )}
-              
+
               <div className="p-6 md:p-8">
                 <h3 className="text-xl font-bold mb-2">{plan.name}</h3>
                 <div className="flex items-baseline mb-4">
-                  <span className="text-3xl md:text-4xl font-bold">{plan.price}</span>
-                  <span className="text-muted-foreground ml-2">/month</span>
+                  <span className="text-3xl md:text-4xl font-bold">
+                    {plan.price}
+                  </span>
+                  <span className="text-muted-foreground ml-2">/ ex. Moms</span>
                 </div>
                 <p className="text-muted-foreground mb-6">{plan.description}</p>
-                
+
                 <div className="space-y-4 mb-8">
                   {plan.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-center">
-                      <div className={`flex-shrink-0 rounded-full w-5 h-5 flex items-center justify-center mr-3 ${
-                        feature.included ? 'bg-primary/10 text-primary' : 'bg-muted text-muted-foreground'
-                      }`}>
+                      <div
+                        className={`flex-shrink-0 rounded-full w-5 h-5 flex items-center justify-center mr-3 ${
+                          feature.included
+                            ? "bg-primary/10 text-primary"
+                            : "bg-muted text-muted-foreground"
+                        }`}
+                      >
                         {feature.included && <Check className="h-3 w-3" />}
                       </div>
-                      <span className={
-                        feature.included ? 'text-foreground' : 'text-muted-foreground'
-                      }>
+                      <span
+                        className={
+                          feature.included
+                            ? "text-foreground"
+                            : "text-muted-foreground"
+                        }
+                      >
                         {feature.text}
                       </span>
                     </div>
                   ))}
                 </div>
-                
-                <Button 
+
+                {/* <Button
                   className={`w-full ${
-                    plan.popular 
-                      ? 'bg-primary hover:bg-primary/90 text-white' 
-                      : 'bg-secondary hover:bg-secondary/80'
+                    plan.popular
+                      ? "bg-primary hover:bg-primary/90 text-white"
+                      : "bg-secondary hover:bg-secondary/80"
                   }`}
                 >
                   {plan.buttonText}
-                </Button>
+                </Button> */}
               </div>
             </motion.div>
           ))}
